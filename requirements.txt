@@ -16,5 +16,10 @@ flask-swagger-ui==3.20.9
 python-dateutil==2.8.1
 python-dotenv==0.11.0
 
-# tests
+# tests / ci
 pytest==5.3.5
+bandit
+coveralls
+coverage
+pylint
+tox
