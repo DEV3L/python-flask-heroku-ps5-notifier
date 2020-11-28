@@ -1,3 +1,7 @@
+[![Build Status](https://travis-ci.org/DEV3L/python-flask-heroku-ps5-notifier.svg?branch=master)](https://travis-ci.org/DEV3L/python-flask-heroku-ps5-notifier)
+[![Maintainability](https://api.codeclimate.com/v1/badges/fc5ba38b5fb2100bb834/maintainability)](https://codeclimate.com/github/DEV3L/python-flask-heroku-ps5-notifier/maintainability)
+[![Coverage Status](https://api.codeclimate.com/v1/badges/059c3623b2cb50f3d340/maintainability)](https://codeclimate.com/github/DEV3L/python-flask-heroku-ps5-notifier/maintainability)
+
 # Python Flask Heroku PS5 Notifier
 
 A Python Flask application that can searches and notifies through Twillio when a PS5 console/digital is available.
