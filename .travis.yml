@@ -9,7 +9,7 @@ install:
 script:
 - coverage run --timid --source ./src -m py.test
 - coverage report
-- bandit -s B301,B403 -r ./src/
+- bandit -s B301,B403,B101 -r ./src/
 
 after_success:
   coveralls
