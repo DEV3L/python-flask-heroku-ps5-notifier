@@ -29,10 +29,10 @@ twilio
 pytest==5.3.5
 bandit
 coveralls
-coverage
+coverage<5.0,>=3.6
 pylint
-tox
 zipp
 stevedore>=1.20.0
 GitPython>=1.0.1
 smmap<4,>=3.0.1
+six==1.12
