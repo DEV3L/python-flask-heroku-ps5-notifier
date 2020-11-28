@@ -7,6 +7,7 @@ from flask_script import Manager
 load_dotenv()
 
 from src.controllers.ping import ping
+from src.controllers.twilio import twilio
 from src.controllers.swagger import swagger_ui_blueprint, swagger_spec, swagger_url
 from src.services.logging_service import LoggingService
 
@@ -18,6 +19,7 @@ environment = os.getenv('ENVIRONMENT', LOCAL_ENVIRONMENT)
 
 app = Flask(__name__)
 app.register_blueprint(ping)
+app.register_blueprint(twilio)
 
 app.register_blueprint(swagger_spec)
 app.register_blueprint(swagger_ui_blueprint, url_prefix=swagger_url)
