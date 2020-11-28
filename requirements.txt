@@ -1,0 +1,20 @@
+# web server
+flask>=1.1.1
+flask-httpauth>=3.3.0
+flask-script
+gunicorn
+
+# database
+pymongo==3.10.1
+dnspython==1.16.0
+
+# swagger
+flask-swagger==0.2.14
+flask-swagger-ui==3.20.9
+
+# modules
+python-dateutil==2.8.1
+python-dotenv==0.11.0
+
+# tests
+pytest==5.3.5
