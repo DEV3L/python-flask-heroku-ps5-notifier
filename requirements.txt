@@ -1,5 +1,11 @@
 # web server
 flask>=1.1.1
+jinja2
+markupsafe
+werkzeug
+itsdangerous
+click
+pyyaml
 flask-httpauth>=3.3.0
 flask-script
 gunicorn
@@ -23,3 +29,4 @@ coveralls
 coverage
 pylint
 tox
+zipp
