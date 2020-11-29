@@ -14,6 +14,9 @@ USER_AGENT = os.environ.get("USER_AGENT",
 class SeleniumDriver:
     def __init__(self):
         options = Options()
+        is_headless = IS_HEADLESS == "True"
+
+        options.headless = is_headless
         options.add_argument("--start-maximized")
         options.add_argument("--kiosk")
         options.add_argument("--disable-dev-shm-usage")
@@ -22,5 +25,5 @@ class SeleniumDriver:
         self.options = options
         self.driver = webdriver.Chrome(options=options, executable_path=GOOGLE_CHROME_BIN)
 
-    def __del__(self):
+    def quit(self):
         self.driver.quit()
