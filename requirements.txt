@@ -27,6 +27,8 @@ twilio
 
 # web scrapping
 selenium
+trio
+fake-useragent
 requests
 beautifulsoup4
 

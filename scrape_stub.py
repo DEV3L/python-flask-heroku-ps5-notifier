@@ -1,11 +1,13 @@
 from src.dao.selenium_driver import SeleniumDriver
 
-selenium_driver = SeleniumDriver()
+if __name__ == "__main__":
+    selenium_driver = SeleniumDriver()
+    driver = selenium_driver.driver
 
-driver = selenium_driver.driver
+    driver.get("https://www.google.com")
 
-driver.get("https://www.google.com")
+    assert "Google" in driver.page_source
 
-print(driver.page_source)
+    selenium_driver.quit()
 
-selenium_driver.quit()
+    print("Selenium with Chrome configured correctly")

@@ -24,6 +24,7 @@ class SeleniumDriver:
         options.add_argument("--kiosk")
         options.add_argument("--disable-dev-shm-usage")
         options.add_argument("--no-sandbox")
+        options.add_argument(f'--user-agent={USER_AGENT}')
 
         self.options = options
         self.driver = webdriver.Chrome(options=options, executable_path=CHROMEDRIVER_PATH)
