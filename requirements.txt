@@ -28,9 +28,6 @@ twilio
 # web scrapping
 selenium
 trio
-fake-useragent
-requests
-beautifulsoup4
 
 # tests / ci
 pytest==5.3.5
