@@ -44,6 +44,15 @@ class SeleniumDriver:
     def page_source(self) -> str:
         return self.driver.page_source
 
+    def wait_by_id(self, element_id: str) -> bool:
+        try:
+            WebDriverWait(self.driver, WAIT_TIME).until(expected_conditions
+                                                        .presence_of_element_located((By.ID, element_id)))
+            return True
+        except TimeoutException:
+            logger.warning(f'Element with id {element_id} not found')
+            return False
+
     def wait_by_class_name(self, class_name: str) -> bool:
         try:
             WebDriverWait(self.driver, WAIT_TIME).until(expected_conditions
@@ -52,6 +61,13 @@ class SeleniumDriver:
         except TimeoutException:
             logger.warning(f'Element with class {class_name} not found')
             return False
+
+    def get_text_by_id(self, element_id: str) -> str:
+        try:
+            return self.driver.find_element_by_id(element_id).text
+        except NoSuchElementException as e:
+            logger.warning(f'Element with id {element_id} not found')
+            return ""
 
     def get_text_by_class_name(self, class_name: str) -> str:
         try:

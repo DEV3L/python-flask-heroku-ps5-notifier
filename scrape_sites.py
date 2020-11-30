@@ -1,31 +1,38 @@
 from dotenv import load_dotenv
 
-from src.services.twilio_service import TwilioService
-
 load_dotenv()
 
+from src.scrapers.scraper_best_buy import ScraperBestBuy
+from src.scrapers.scraper_amazon import ScraperAmazon
+from src.services.twilio_service import TwilioService
 from src.services.logging_service import LoggingService
 from src.dao.selenium_driver import SeleniumDriver
-from src.scrapers.scrape_best_buy import ScrapeBestBuy, BEST_BUY_PS5_CONSOLE, BEST_BUY_PS5_DIGITAL
 
 logger = LoggingService('scrape_sites')
+
+
+def check_site(scraper):
+    if scraper.is_ps5_console_available():
+        logger.info(f'PS5 Console AVAILABLE at {scraper.site_name}')
+        twilio_service.send_message(f'PS5 Console Available at {scraper.site_name} - {scraper.ps5_console_url}')
+    else:
+        logger.info(f'PS5 Console not available at {scraper.site_name}')
+
+    if scraper.is_ps5_digital_available():
+        logger.info(f'PS5 Digital AVAILABLE at {scraper.site_name}')
+        twilio_service.send_message(f'PS5 Console Available at {scraper.site_name} - {scraper.ps5_digital_url}')
+    else:
+        logger.info(f'PS5 Digital not available at {scraper.site_name}')
+
 
 if __name__ == "__main__":
     twilio_service = TwilioService()
     selenium_driver = SeleniumDriver()
 
-    scrape_best_buy = ScrapeBestBuy(selenium_driver)
+    scraper_best_buy = ScraperBestBuy(selenium_driver)
+    check_site(scraper_best_buy)
 
-    if scrape_best_buy.is_ps5_console_available():
-        logger.info("PS5 Console AVAILABLE at Best Buy")
-        twilio_service.send_message(f'PS5 Console Available at Best Buy - {BEST_BUY_PS5_CONSOLE}')
-    else:
-        logger.info("PS5 Console not available at Best Buy")
-
-    if scrape_best_buy.is_ps5_digital_available():
-        logger.info("PS5 Digital AVAILABLE at Best Buy")
-        twilio_service.send_message(f'PS5 Console Available at Best Buy - {BEST_BUY_PS5_DIGITAL}')
-    else:
-        logger.info("PS5 Digital not available at Best Buy")
+    scraper_amazon = ScraperAmazon(selenium_driver)
+    check_site(scraper_amazon)
 
     selenium_driver.quit()
