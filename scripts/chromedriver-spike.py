@@ -45,10 +45,9 @@ Object.defineProperty(navigator, 'webdriver', {
 '''
 driver.execute_script(script)
 
-driver.get("https://www.walmart.com/")
+driver.get("https://www.target.com/p/playstation-5-console/-/A-81114595/")
 
-driver.get("https://www.walmart.com/ip/PlayStation-5-Console/363472942")
-
+# https://www.amazon.com/gp/product/B08FC5L3RG?pf_rd_r=SFWHDBTP650KW81PACT
 # driver.get("https://www.bestbuy.com/site/sony-playstation-5-console/6426149.p?skuId=6426149")
 
 # driver.get("https://www.amazon.com/PlayStation-5-Console/dp/B08FC5L3RG")

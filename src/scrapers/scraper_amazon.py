@@ -22,7 +22,7 @@ class ScraperAmazon(Scraper):
 
         page_source = self.selenium_driver.page_source()
 
-        if "PlayStation 5" not in page_source:
+        if "playstation 5" not in page_source.lower():
             return False
 
         status_text = self.selenium_driver.get_text_by_id('availability')
