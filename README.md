@@ -1,6 +1,6 @@
 [![Build Status](https://travis-ci.org/DEV3L/python-flask-heroku-ps5-notifier.svg?branch=master)](https://travis-ci.org/DEV3L/python-flask-heroku-ps5-notifier)
 [![Maintainability](https://api.codeclimate.com/v1/badges/fc5ba38b5fb2100bb834/maintainability)](https://codeclimate.com/github/DEV3L/python-flask-heroku-ps5-notifier/maintainability)
-[![Coverage Status](https://api.codeclimate.com/v1/badges/059c3623b2cb50f3d340/maintainability)](https://codeclimate.com/github/DEV3L/python-flask-heroku-ps5-notifier/maintainability)
+[![Coverage Status](https://coveralls.io/repos/github/DEV3L/python-flask-heroku-ps5-notifier/badge.svg?branch=master)](https://coveralls.io/github/DEV3L/python-flask-heroku-ps5-notifier?branch=master)
 
 # Python Flask Heroku PS5 Notifier
 
