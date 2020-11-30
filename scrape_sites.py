@@ -3,9 +3,10 @@ from dotenv import load_dotenv
 
 load_dotenv()
 
-from src.scrapers.scraper_best_buy import ScraperBestBuy
 from src.scrapers.scraper_amazon import ScraperAmazon
+from src.scrapers.scraper_best_buy import ScraperBestBuy
 from src.scrapers.scraper_game_stop import ScraperGameStop
+from src.scrapers.scraper_target import ScraperTarget
 from src.services.twilio_service import TwilioService
 from src.services.logging_service import LoggingService
 from src.dao.selenium_driver import SeleniumDriver
@@ -39,5 +40,8 @@ if __name__ == "__main__":
 
     scraper_game_stop = ScraperGameStop(selenium_driver)
     check_site(scraper_game_stop)
+
+    scraper_target = ScraperTarget(selenium_driver)
+    check_site(scraper_target)
 
     selenium_driver.quit()

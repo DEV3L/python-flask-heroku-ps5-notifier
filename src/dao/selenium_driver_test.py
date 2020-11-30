@@ -124,6 +124,41 @@ def test_wait_by_class_name_false(mock_webdriver, mock_webdriverwait):
     assert not is_wait
 
 
+@patch('src.dao.selenium_driver.WebDriverWait')
+@patch('src.dao.selenium_driver.webdriver')
+def test_wait_by_css_selector_true(mock_webdriver, mock_webdriverwait):
+    expected_css_selector = "css-selector"
+
+    selenium_driver = SeleniumDriver()
+    is_wait = selenium_driver.wait_by_css_selector(expected_css_selector)
+
+    mock_driver = mock_webdriver.Chrome.return_value
+
+    assert mock_webdriverwait.called
+    mock_webdriverwait.assert_called_with(mock_driver, WAIT_TIME)
+    assert mock_webdriverwait.return_value.until.called
+
+    assert is_wait
+
+
+@patch('src.dao.selenium_driver.WebDriverWait')
+@patch('src.dao.selenium_driver.webdriver')
+def test_wait_by_css_selector_false(mock_webdriver, mock_webdriverwait):
+    expected_css_selector = "css-selector"
+
+    mock_webdriverwait.side_effect = MagicMock(side_effect=TimeoutException('Test'))
+
+    selenium_driver = SeleniumDriver()
+    is_wait = selenium_driver.wait_by_css_selector(expected_css_selector)
+
+    mock_driver = mock_webdriver.Chrome.return_value
+
+    assert mock_webdriverwait.called
+    mock_webdriverwait.assert_called_with(mock_driver, WAIT_TIME)
+
+    assert not is_wait
+
+
 @patch('src.dao.selenium_driver.webdriver')
 def test_get_text_by_id(mock_webdriver):
     expected_id = "element-id"
@@ -175,6 +210,33 @@ def test_get_text_by_class_name_not_found(mock_webdriver):
     text = selenium_driver.get_text_by_class_name(expected_class_name)
 
     mock_driver.find_element_by_class_name.assert_called_with(expected_class_name)
+    assert not text
+
+
+@patch('src.dao.selenium_driver.webdriver')
+def test_get_text_by_css_selector(mock_webdriver):
+    expected_css_selector = "css-selector"
+
+    selenium_driver = SeleniumDriver()
+    text = selenium_driver.get_text_by_css_selector(expected_css_selector)
+
+    mock_driver = mock_webdriver.Chrome.return_value
+
+    mock_driver.find_element_by_css_selector.assert_called_with(expected_css_selector)
+    assert mock_driver.find_element_by_css_selector.return_value.text == text
+
+
+@patch('src.dao.selenium_driver.webdriver')
+def test_get_text_by_css_selector_not_found(mock_webdriver):
+    expected_css_selector = "css-selector"
+    mock_driver = mock_webdriver.Chrome.return_value
+
+    mock_driver.find_element_by_css_selector.side_effect = MagicMock(side_effect=NoSuchElementException('Test'))
+
+    selenium_driver = SeleniumDriver()
+    text = selenium_driver.get_text_by_css_selector(expected_css_selector)
+
+    mock_driver.find_element_by_css_selector.assert_called_with(expected_css_selector)
     assert not text
 
 

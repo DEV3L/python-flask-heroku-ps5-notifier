@@ -21,7 +21,7 @@ class TwilioService:
 
         self.client = Client(self.account_sid, self.auth_token)
 
-    def send_message(self, message: object) -> object:
+    def send_message(self, message: str) -> object:
         self.client.api.account.messages.create(
             to=self.twilio_to,
             from_=self.twilio_from,

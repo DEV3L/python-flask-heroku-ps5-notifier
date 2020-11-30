@@ -7,7 +7,7 @@
 A Python Flask application that can searches and notifies through Twillio when a PS5 console/digital is available.
 
 Article written on Dev.to detailing project purpose, setup, and execution:<br />
-[Message bot to find a PS5 on sale](https://dev.to/dev3l/message-bot-to-find-a-ps5-on-sale-25na-temp-slug-4237136?preview=536ffeef8e36ea8881268762770d9033ea8a9e64e79be5ee7a2af323c514094f18b0eeb370d6be673e5cba30e5c2b7b816281d37600315de7ffe3582)
+[Message bot to find a PS5 on sale](https://dev.to/dev3l/message-bot-to-find-a-ps5-on-sale-2n5k)
 
 ## Prerequisites
 

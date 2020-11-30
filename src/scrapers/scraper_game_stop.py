@@ -14,7 +14,7 @@ GAME_STOP_PS5_DIGITAL = os.environ. \
 
 class ScraperGameStop(Scraper):
     def __init__(self, selenium_driver: SeleniumDriver):
-        Scraper.__init__(self, selenium_driver, "Amazon", GAME_STOP_PS5_CONSOLE, GAME_STOP_PS5_DIGITAL)
+        Scraper.__init__(self, selenium_driver, "Game Stop", GAME_STOP_PS5_CONSOLE, GAME_STOP_PS5_DIGITAL)
 
     def _is_available(self, url: str):
         self.selenium_driver.get(url)

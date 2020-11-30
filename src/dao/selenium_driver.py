@@ -62,6 +62,15 @@ class SeleniumDriver:
             logger.warning(f'Element with class {class_name} not found')
             return False
 
+    def wait_by_css_selector(self, css_selector: str) -> bool:
+        try:
+            WebDriverWait(self.driver, WAIT_TIME).until(expected_conditions
+                                                        .presence_of_element_located((By.CSS_SELECTOR, css_selector)))
+            return True
+        except TimeoutException:
+            logger.warning(f'Element with css selector {css_selector} not found')
+            return False
+
     def get_text_by_id(self, element_id: str) -> str:
         try:
             return self.driver.find_element_by_id(element_id).text
@@ -74,6 +83,13 @@ class SeleniumDriver:
             return self.driver.find_element_by_class_name(class_name).text
         except NoSuchElementException as e:
             logger.warning(f'Element with class {class_name} not found')
+            return ""
+
+    def get_text_by_css_selector(self, css_selector: str) -> str:
+        try:
+            return self.driver.find_element_by_css_selector(css_selector).text
+        except NoSuchElementException as e:
+            logger.warning(f'Element with css selector {css_selector} not found')
             return ""
 
     def quit(self):
