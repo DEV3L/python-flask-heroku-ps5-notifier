@@ -29,7 +29,7 @@ class ScraperBestBuy(Scraper):
 
         if not status_text:
             return False
-        elif "sold out" in status_text.lower():
+        elif "sold out" in status_text.lower() or "coming soon" in status_text.lower():
             return False
         else:
             return True
